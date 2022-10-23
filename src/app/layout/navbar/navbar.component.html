@@ -1,0 +1,45 @@
+<nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="./assets/img/angular_logo.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <!-- navbar items -->
+          <a class="navbar-item" [routerLink]="['home']">
+            Home
+          </a>
+          <a class="navbar-item" [routerLink]="['content']">
+            Content
+          </a>
+          <a class="navbar-item" [routerLink]="['about-us']">
+            About Us
+          </a>
+        </div>
+
+        <div class="navbar-end">
+           <div class="navbar-item">
+              <p class="control has-icons-right">
+                  <input class="input" type="search" placeholder="Buscar...">
+                  <span class="icon is-right">
+                      <i class="ri-search-line"></i>
+                  </span>
+              </p>
+          </div>
+
+          <a class="navbar-item" [routerLink]="['account']">
+            <div style="font-size: 30px">
+              <i class="ri-account-circle-fill"></i> 
+            </div>
+          </a>    
+        </div>
+      </div>
+  </nav>
