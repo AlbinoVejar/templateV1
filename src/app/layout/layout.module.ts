@@ -1,15 +1,26 @@
+import { ContentComponent } from './content/content.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccountComponent } from './account/account.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [
-    // LayoutComponent
+    LayoutComponent,
+    NavbarComponent,
+    HomeComponent,
+    AccountComponent,
+    ContentComponent,
+    AboutUsComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     LayoutRoutingModule
   ],
   providers: [],
