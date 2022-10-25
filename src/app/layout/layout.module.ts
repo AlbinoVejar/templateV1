@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './account/account.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CommonModule } from '@angular/common';
+import { ContainerComponent } from './container/container.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
     AccountComponent,
     ContentComponent,
     AboutUsComponent,
+    ContainerComponent,
   ],
   imports: [
     // BrowserModule,

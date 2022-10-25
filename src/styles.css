@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'remixicon/fonts/remixicon.css'
+@import 'remixicon/fonts/remixicon.css';
+
+.table thead th {
+    background-color: black;
+    color: white;
+  }
+
+.table{
+    margin-top: 30px;
+  }
+
+.tablita {
+    align-items: center;
+    margin-top: 5%;
+}
