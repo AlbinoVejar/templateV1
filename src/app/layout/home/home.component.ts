@@ -6,13 +6,18 @@ import { UsuarioService } from 'src/app/services/usuarios.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
+  usuarios: any[] = [];
   constructor(
     private usuarioService: UsuarioService
   ) { }
 
   ngOnInit(): void {
-    this.usuarioService.getUsuarios();
+    this.usuarioService.getUsuarios().then(({data}: any) => {
+      console.log(data);
+      this.usuarios = data;
+    }).catch(err => {
+      console.warn(err);
+    })
   }
 
 }

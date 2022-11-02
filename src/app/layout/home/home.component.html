@@ -15,9 +15,11 @@
             <th>Fecha de Nacimiento</th>
         </tr>
     </thead>
-    <!-- <tbody>
-        <tr>
-            <td></td>
+    <tbody>
+        <tr *ngFor="let item of usuarios">
+            <td>{{item.Id}}</td>
+            <td>{{item.Nombre}}</td>
+            <td>{{item.Apellidos}}</td>
         </tr>
-    </tbody> -->
+    </tbody>
 </table>
