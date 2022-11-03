@@ -13,11 +13,22 @@
             <th>Estado</th>
             <th>C.P</th>
             <th>Fecha de Nacimiento</th>
+            <th>Acciones</th>
         </tr>
     </thead>
-    <!-- <tbody>
-        <tr>
-            <td></td>
+    <tbody>
+        <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.Id }}</td>
+            <td>{{ usuario.Nombre }}</td>
+            <td>{{ usuario.Apellidos }}</td>
+            <td>{{ usuario.Direccion }}</td>
+            <td>{{ usuario.Ciudad }}</td>
+            <td>{{ usuario.Estado }}</td>
+            <td>{{ usuario.Cp }}</td>
+            <td>{{ usuario.Fechanacimiento }}</td>
+            <td>
+                
+            </td>
         </tr>
-    </tbody> -->
+    </tbody> 
 </table>
