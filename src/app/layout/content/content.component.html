@@ -1,6 +1,6 @@
-<div *ngIf="DatosUsuario">
+<div>
     <form autocomplete="off" [formGroup]="formaUsuario"  (ngSubmit)="guardar()">
-        <!-- <div class="field is-horizontal">
+        <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Nombre</label>
             </div>
@@ -8,16 +8,49 @@
             <div class="field-body">
                 <div class="field">
                         <input class="control"
-                        formControlName="nombre" 
+                        formControlName="Nombre" 
                         type="text" 
                         placeholder=""
-                        value='{{ DatosUsuario.Nombre}}' >
+                        />
                 </div>
             </div>
-        </div> -->
-        <li *ngFor="let Data of DatosUsuario">
-            <ul>{{ Data.Id  }}</ul>
-        </li>
+
+            <div class="field-label is-normal">
+                <label class="label">Apellidos</label>
+              </div>
+
+            <div class="field-body">
+                <div class="field">
+                        <input class="control"
+                        formControlName="Apellidos" 
+                        type="text" 
+                        placeholder=""
+                        />
+                </div>
+            </div>
+        </div>
     </form>
 
 </div>
+
+<button class="btn btn-primary" (click)="onShowModal()">
+Modal
+</button>
+
+
+<div class="modal" [ngClass]="showModal ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+        <button class="delete" aria-label="close" (click)="onShowModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <app-about-us></app-about-us>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Save changes</button>
+        <button class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
