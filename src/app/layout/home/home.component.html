@@ -5,15 +5,15 @@
 <table class="table is-bordered is-striped is-fullwidth">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Direccion</th>
-            <th>Ciudad</th>
-            <th>Estado</th>
-            <th>C.P</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Acciones</th>
+            <th class="has-text-centered">ID</th>
+            <th class="has-text-centered">Nombre</th>
+            <th class="has-text-centered">Apellido</th>
+            <th class="has-text-centered">Direccion</th>
+            <th class="has-text-centered">Ciudad</th>
+            <th class="has-text-centered">Estado</th>
+            <th class="has-text-centered">C.P</th>
+            <th class="has-text-centered">Fecha de Nacimiento</th>
+            <th class="has-text-centered">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -25,9 +25,16 @@
             <td>{{ usuario.Ciudad }}</td>
             <td>{{ usuario.Estado }}</td>
             <td>{{ usuario.Cp }}</td>
-            <td>{{ usuario.Fechanacimiento }}</td>
+            <td class="has-text-centered">{{ usuario.FechaNacimiento | date:'mediumDate' }}</td>
             <td>
-                
+                <div class="buttons is-centered" routerLink='/content/{{ usuario.Id }}'>
+                    <button class="button is-success">
+                        <i class="ri-edit-fill"></i>
+                    </button>
+                    <button class="button is-danger">
+                        <i class="ri-delete-bin-7-fill"></i>
+                    </button>
+                  </div>
             </td>
         </tr>
     </tbody> 

@@ -1,1 +1,23 @@
-<p>content works!</p>
+<div *ngIf="DatosUsuario">
+    <form autocomplete="off" [formGroup]="formaUsuario"  (ngSubmit)="guardar()">
+        <!-- <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nombre</label>
+            </div>
+          
+            <div class="field-body">
+                <div class="field">
+                        <input class="control"
+                        formControlName="nombre" 
+                        type="text" 
+                        placeholder=""
+                        value='{{ DatosUsuario.Nombre}}' >
+                </div>
+            </div>
+        </div> -->
+        <li *ngFor="let Data of DatosUsuario">
+            <ul>{{ Data.Id  }}</ul>
+        </li>
+    </form>
+
+</div>

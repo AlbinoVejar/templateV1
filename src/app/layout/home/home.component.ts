@@ -13,11 +13,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioService.getUsuarios().then(({data}: any) => {
-      console.log(data);
       this.usuarios = data;
-    }).catch(err => {
-      console.warn(err);
-    })
+    }).catch(err => { })
   }
 
 }

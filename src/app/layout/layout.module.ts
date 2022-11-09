@@ -8,6 +8,7 @@ import { AccountComponent } from './account/account.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +20,13 @@ import { ContainerComponent } from './container/container.component';
     ContentComponent,
     AboutUsComponent,
     ContainerComponent,
+
   ],
   imports: [
     // BrowserModule,
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: []
