@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { UsuarioService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-content',
@@ -29,7 +31,17 @@ export class ContentComponent implements OnInit {
 
   get nombreNoValido()
   { 
-    return this.formaUsuario.get('nombre')?.invalid && this.formaUsuario.get('nombre')?.touched
+    return this.formaUsuario.get('Nombre')?.invalid && this.formaUsuario.get('Nombre')?.touched
+  }
+
+  get ApellidoNoValido()
+  { 
+    return this.formaUsuario.get('Apellidos')?.invalid && this.formaUsuario.get('Apellidos')?.touched
+  }
+
+  get FechaNoValido()
+  {
+    return this.formaUsuario.get('FechaNacimiento')?.invalid && this.formaUsuario.get('FechaNacimiento')?.touched
   }
 
   onShowModal(){
@@ -39,12 +51,45 @@ export class ContentComponent implements OnInit {
   crearFormulario()
   {
       this.formaUsuario = this.fb.group({
-        Nombre: ['', [Validators.required, Validators.minLength(5)]],
-        Apellidos: ['']
+        Nombre: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        Apellidos: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        Direccion: [''],
+        Ciudad: [''],
+        Estado: [''],
+        Cp: [''],
+        FechaNacimiento: ['',[Validators.required]]
       });
   }
 
   guardar()
-  {}
+  {
+    if( this.formaUsuario.invalid){
+
+      return Object.values( this.formaUsuario.controls).forEach( control => {
+        if ( control instanceof FormGroup){
+          Object.values( this.formaUsuario.controls).forEach( control => control.markAllAsTouched());
+        }
+        else{
+          control.markAllAsTouched();
+        }
+      });
+      
+    }
+    else
+    {
+      let id = this.acRoute.snapshot.params['id'];
+      this.usuarioService.updateUsuario(id, this.formaUsuario.value).then(
+        data => 
+        
+      Swal.fire({
+        title: this.formaUsuario.value.Nombre,
+        text: 'Se actualizo correctamente',
+        icon: 'success'
+      })
+        
+      )
+      
+    }
+  }
 
 }

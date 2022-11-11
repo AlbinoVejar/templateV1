@@ -1,56 +1,126 @@
-<div>
-    <form autocomplete="off" [formGroup]="formaUsuario"  (ngSubmit)="guardar()">
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Nombre</label>
-            </div>
-          
-            <div class="field-body">
-                <div class="field">
-                        <input class="control"
-                        formControlName="Nombre" 
-                        type="text" 
-                        placeholder=""
-                        />
-                </div>
-            </div>
+<form class="box" autocomplete="off" [formGroup]="formaUsuario" (ngSubmit)="guardar()">
 
-            <div class="field-label is-normal">
-                <label class="label">Apellidos</label>
-              </div>
+  <div class="columns">
+    <div class="column">
+      <label class="label">Name</label>
+      <div class="control has-icons-left">
+        <input 
+        class="input form-control" 
+        type="text" 
+        formControlName="Nombre"
+        [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido" class="has-text-danger">Invalid Name</small>
+        <span class="icon is-small is-left">
+          <i class="ri-user-3-line"></i>
+        </span>
+      </div>
+    </div>
 
-            <div class="field-body">
-                <div class="field">
-                        <input class="control"
-                        formControlName="Apellidos" 
-                        type="text" 
-                        placeholder=""
-                        />
-                </div>
-            </div>
-        </div>
-    </form>
+    <div class="column">
+      <label class="label">Last Name</label>
+      <div class="control has-icons-left">
+        <input class="input" 
+        type="text" 
+        formControlName="Apellidos" 
+        [class.is-invalid]="ApellidoNoValido">
+        <small *ngIf="ApellidoNoValido" class="has-text-danger">Invalid Last Name</small>
+        <span class="icon is-small is-left">
+          <i class="ri-user-3-line"></i>
+        </span>
+      </div>
+    </div>
+  </div>
 
-</div>
+  <div class="columns">
+    <div class="column">
+      <label class="label">Direction</label>
+      <div class="control has-icons-left">
+        <input 
+        class="input" 
+        type="text" 
+        formControlName="Direccion" >
+        
+        <span class="icon is-small is-left">
+          <i class="ri-direction-line"></i>
+        </span>
+      </div>
+    </div>
 
-<button class="btn btn-primary" (click)="onShowModal()">
-Modal
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <label class="label">City</label>
+      <div class="control has-icons-left">
+        <input class="input" type="text" formControlName="Ciudad">
+        <span class="icon is-small is-left">
+          <i class="ri-building-4-line"></i>
+        </span>
+      </div>
+    </div>
+    
+    <div class="column">
+      <label class="label">State</label>
+      <div class="control has-icons-left">
+        <input class="input" type="text" formControlName="Estado">
+        <span class="icon is-small is-left">
+          <i class="ri-map-pin-line"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="column">
+      <label class="label">C.P</label>
+      <div class="control has-icons-left">
+        <input class="input" type="text" formControlName="Cp">
+        <span class="icon is-small is-left">
+          <i class="ri-hashtag"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="column">
+      <label class="label">Date</label>
+      <div class="control has-icons-left">
+        <input 
+        class="input" 
+        type="text" 
+        formControlName="FechaNacimiento"
+        [class.is-invalid]="FechaNoValido">
+        <small *ngIf="FechaNoValido" class="has-text-danger">Invalid Date</small>
+        <span class="icon is-small is-left">
+          <i class="ri-calendar-line"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+<hr>
+  <div class="has-text-centered">
+    <button class="button is-primary is-medium" type="submit"  style="width: 25%;">Save</button>
+    <button class="button is-medium  is-danger"  style="width: 25%; margin-left: 2%;" routerLink="/home">Cancel</button>
+  </div>
+
+
+</form>
+
+<!-- <button class="btn btn-primary ml-5 mt-5" (click)="onShowModal()">
+  Modal
 </button>
 
 
 <div class="modal" [ngClass]="showModal ? 'is-active' : ''">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
-        <button class="delete" aria-label="close" (click)="onShowModal()"></button>
-      </header>
-      <section class="modal-card-body">
-        <app-about-us></app-about-us>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button">Cancel</button>
-      </footer>
-    </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close" (click)="onShowModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <app-about-us></app-about-us>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
   </div>
+</div> -->

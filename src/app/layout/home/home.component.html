@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let usuario of usuarios">
+        <tr *ngFor="let usuario of usuarios;  let i = index">
             <td>{{ usuario.Id }}</td>
             <td>{{ usuario.Nombre }}</td>
             <td>{{ usuario.Apellidos }}</td>
@@ -27,11 +27,11 @@
             <td>{{ usuario.Cp }}</td>
             <td class="has-text-centered">{{ usuario.FechaNacimiento | date:'mediumDate' }}</td>
             <td>
-                <div class="buttons is-centered" routerLink='/content/{{ usuario.Id }}'>
-                    <button class="button is-success">
+                <div class="buttons is-centered">
+                    <button class="button is-success" routerLink='/content/{{ usuario.Id }}'>
                         <i class="ri-edit-fill"></i>
                     </button>
-                    <button class="button is-danger">
+                    <button class="button is-danger" (click)="borrarUsuario(usuario.Id, i)">
                         <i class="ri-delete-bin-7-fill"></i>
                     </button>
                   </div>
