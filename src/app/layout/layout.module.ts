@@ -9,6 +9,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContentComponent,
     AboutUsComponent,
     ContainerComponent,
+    SidebarComponent,
 
   ],
   imports: [
