@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   selector: 'app-content',
   templateUrl: './content.component.html'
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnChanges {
 
   formaUsuario!: FormGroup;
   showModal: Boolean = false;
@@ -27,14 +27,13 @@ export class ContentComponent implements OnInit {
               { 
                 this.crearFormulario();
               }
-
-  ngOnInit(): void {
-    //let id = this.acRoute.snapshot.params['id']; //agarrar el id
+              
+  ngOnChanges(): void {
     console.log(this.IdUsuario);
 
     this.usuarioService.getUsuario(this.IdUsuario).then( ({data} : any) => { 
-      this.formaUsuario.patchValue(data); // binding entre Formulario y Objecto formulario.nombre = data.nombre 
-    }).catch(err => {})  // Recibir la información
+           this.formaUsuario.patchValue(data); // binding entre Formulario y Objecto formulario.nombre = data.nombre 
+     }).catch(err => {})  // Recibir la información
   }
 
   get nombreNoValido()
