@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UsuarioService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
@@ -13,6 +12,15 @@ export class ContentComponent implements OnInit {
 
   formaUsuario!: FormGroup;
   showModal: Boolean = false;
+  success: Boolean = false;
+
+  @Input()
+  IdUsuario: number;
+
+  @Output()
+  CerrarModalEvento = new EventEmitter<Boolean>();
+
+
   constructor(private acRoute:ActivatedRoute,
               private usuarioService: UsuarioService,
               private fb : FormBuilder) 
@@ -21,10 +29,10 @@ export class ContentComponent implements OnInit {
               }
 
   ngOnInit(): void {
-   
-    let id = this.acRoute.snapshot.params['id']; //agarrar el id
+    //let id = this.acRoute.snapshot.params['id']; //agarrar el id
+    console.log(this.IdUsuario);
 
-    this.usuarioService.getUsuario(id).then( ({data} : any) => { 
+    this.usuarioService.getUsuario(this.IdUsuario).then( ({data} : any) => { 
       this.formaUsuario.patchValue(data); // binding entre Formulario y Objecto formulario.nombre = data.nombre 
     }).catch(err => {})  // Recibir la información
   }
@@ -77,19 +85,21 @@ export class ContentComponent implements OnInit {
     }
     else
     {
-      let id = this.acRoute.snapshot.params['id'];
-      this.usuarioService.updateUsuario(id, this.formaUsuario.value).then(
+      this.usuarioService.updateUsuario(this.IdUsuario, this.formaUsuario.value).then(
         data => 
         
       Swal.fire({
         title: this.formaUsuario.value.Nombre,
         text: 'Se actualizo correctamente',
         icon: 'success'
-      })
-        
-      )
-      
+      }))
+      this.success = true;
     }
+  }
+
+  CerrarModal()
+  {
+    this.CerrarModalEvento.emit(this.success);
   }
 
 }

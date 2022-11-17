@@ -6,8 +6,11 @@ import Swal from 'sweetalert2';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
+
 export class HomeComponent implements OnInit {
   usuarios: any[] = [];
+  showModal: Boolean = false;
+  IdUsuario: number;
   constructor(
     private usuarioService: UsuarioService
   ) { }
@@ -38,6 +41,24 @@ export class HomeComponent implements OnInit {
       }
 
     })
+  }
+
+  onShowModal(id?: number){
+    this.showModal = !this.showModal;
+    if(id)
+    {
+      this.IdUsuario = id;  
+    }
+  }
+
+  CerrarModal(event)
+  {
+    if(event)
+    {
+      this.usuarioService.getUsuarios().then(({data}: any) => {
+        this.usuarios = data;
+      }).catch(err => { })
+    }
   }
 
 }
