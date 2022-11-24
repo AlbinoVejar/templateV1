@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
   {
     if(event)
     {
+      this.showModal = false;
       this.usuarioService.getUsuarios().then(({data}: any) => {
         this.usuarios = data;
       }).catch(err => { })

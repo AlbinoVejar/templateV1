@@ -93,6 +93,7 @@ export class ContentComponent implements OnChanges {
         icon: 'success'
       }))
       this.success = true;
+      this.CerrarModal();
     }
   }
 
